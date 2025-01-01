@@ -2,6 +2,7 @@ import random, sys, time, pygame
 from pygame.locals import *
 from pygame import *
 
+
 pygame.init()
 
 FPS = 30
