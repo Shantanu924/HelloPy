@@ -8,7 +8,7 @@ class PaintApp:
         self.root.title("Paint App")
         self.root.geometry("1000x800")
 
-        self.canvas = tk.Canvas(root, bg='white', width=800, height=600)
+        self.canvas = tk.Canvas(root, bg='white', width=1000, height=600)
         self.canvas.pack(pady=20)
 
         self.pen_color ='black'
@@ -25,13 +25,13 @@ class PaintApp:
         self.controls_frame = tk.Frame(root)
         self.controls_frame.pack()
 
-        self.color_button = tk.Button(self.controls_frame,text='choose color',command=self.choose_color)
+        self.color_button = tk.Button(self.controls_frame,text='Outline Color',command=self.choose_color)
         self.color_button.pack(side='left',padx=5)
 
-        self.fill_color_button = tk.Button(self.controls_frame,text='fill color',command=self.choose_fill_color)
+        self.fill_color_button = tk.Button(self.controls_frame,text='Inner Fill color',command=self.choose_fill_color)
         self.fill_color_button.pack(side='left',padx=5)
 
-        self.clear_button = tk.Button(self.controls_frame,text='clear',command=self.clear_canvas)
+        self.clear_button = tk.Button(self.controls_frame,text='clear canvas',command=self.clear_canvas)
         self.clear_button.pack(side='left',padx=5)
 
         self.save_button = tk.Button(self.controls_frame,text='save',command=self.save_image)
@@ -41,7 +41,7 @@ class PaintApp:
         self.pen_size_slider.set(self.pen_width)
         self.pen_size_slider.pack(side='left',padx=10)
 
-        self.tool_menu = tk.OptionMenu(self.controls_frame, tk.StringVar(value=self.active_tool), "brush","line","rectangle","oval","eraser", command=self.set_tool,)
+        self.tool_menu = tk.OptionMenu(self.controls_frame, tk.StringVar(value=self.active_tool), "brush","rectangle","oval","eraser", command=self.set_tool,)
         self.tool_menu.pack(side='left',padx=5)
 
         self.canvas.bind("<ButtonPress-1>",self.on_button_press)
@@ -106,7 +106,7 @@ class PaintApp:
                 smooth = True
             )
             self.draw.line(
-                [self.last__x,self.last__y,event.x,event.y],
+                [self.last_x,self.last_y,event.x,event.y],
                 fill = self.pen_color,
                 width = self.pen_size_slider.get(),
             )
